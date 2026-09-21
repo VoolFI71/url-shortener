@@ -6,27 +6,30 @@
 Если отправить один и тот же URL несколько раз, сервис вернёт одну и ту же
 короткую ссылку.
 
-## Запуск в памяти
+## Запуск в Windows PowerShell
 
-```bash
-go run ./cmd/api
+```powershell
+go run .\cmd\api
 ```
 
 Сервис будет доступен на `http://localhost:8080`.
 
 Создать короткую ссылку:
 
-```bash
-curl -i -X POST http://localhost:8080/api/v1/urls \
-  -H "Content-Type: application/json" \
-  -d '{"url":"https://example.com/article"}'
+```powershell
+$body = @{ url = 'https://example.com/article' } | ConvertTo-Json
+Invoke-RestMethod -Method Post -Uri 'http://localhost:8080/api/v1/urls' -ContentType 'application/json' -Body $body
 ```
 
 Новая ссылка возвращается с `201 Created`. Повторный запрос того же URL — с
 `200 OK` и тем же кодом.
 
 Переход по `GET /{code}` отвечает `302 Found` и перенаправляет на исходный
-адрес.
+адрес. Подставь код из поля `short_url`:
+
+```powershell
+curl.exe -i http://localhost:8080/Abc123_Xyz
+```
 
 При запуске в памяти данные пропадут после остановки сервиса.
 
@@ -34,8 +37,8 @@ curl -i -X POST http://localhost:8080/api/v1/urls \
 
 Для запуска вместе с PostgreSQL:
 
-```bash
-docker compose up --build
+```powershell
+docker-compose up --build
 ```
 
 Compose создаёт базу, применяет миграцию из `migrations` и запускает сервис на
@@ -43,8 +46,10 @@ Compose создаёт базу, применяет миграцию из `migra
 
 Можно подключить свою базу:
 
-```bash
-STORAGE=postgres DATABASE_URL='postgres://user:password@localhost:5432/shortener?sslmode=disable' go run ./cmd/api
+```powershell
+$env:STORAGE = 'postgres'
+$env:DATABASE_URL = 'postgres://user:password@localhost:5432/shortener?sslmode=disable'
+go run .\cmd\api
 ```
 
 Переменные окружения:
@@ -56,6 +61,6 @@ STORAGE=postgres DATABASE_URL='postgres://user:password@localhost:5432/shortener
 
 ## Тесты
 
-```bash
-go test ./...
+```powershell
+go test .\...
 ```
