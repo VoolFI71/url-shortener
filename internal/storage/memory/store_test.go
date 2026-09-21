@@ -7,8 +7,8 @@ import (
 	"sync"
 	"testing"
 
-	"url-shortener/internal/shortener"
-	"url-shortener/internal/storage/memory"
+	"github.com/VoolFI71/url-shortener/internal/shortener"
+	"github.com/VoolFI71/url-shortener/internal/storage/memory"
 )
 
 func TestSaveIsIdempotentForOriginalURL(t *testing.T) {

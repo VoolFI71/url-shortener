@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"url-shortener/internal/shortener"
+	"github.com/VoolFI71/url-shortener/internal/shortener"
 )
 
 func TestRandomGeneratorProducesValidCodes(t *testing.T) {

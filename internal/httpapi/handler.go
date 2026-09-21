@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"strings"
 
-	"url-shortener/internal/shortener"
+	"github.com/VoolFI71/url-shortener/internal/shortener"
 )
 
 type Handler struct {

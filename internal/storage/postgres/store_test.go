@@ -8,7 +8,7 @@ import (
 	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgconn"
 
-	"url-shortener/internal/shortener"
+	"github.com/VoolFI71/url-shortener/internal/shortener"
 )
 
 type fakeDatabase struct {

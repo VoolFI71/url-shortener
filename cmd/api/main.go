@@ -11,10 +11,10 @@ import (
 	"syscall"
 	"time"
 
-	"url-shortener/internal/httpapi"
-	"url-shortener/internal/shortener"
-	"url-shortener/internal/storage/memory"
-	"url-shortener/internal/storage/postgres"
+	"github.com/VoolFI71/url-shortener/internal/httpapi"
+	"github.com/VoolFI71/url-shortener/internal/shortener"
+	"github.com/VoolFI71/url-shortener/internal/storage/memory"
+	"github.com/VoolFI71/url-shortener/internal/storage/postgres"
 )
 
 func main() {

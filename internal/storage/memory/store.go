@@ -4,7 +4,7 @@ import (
 	"context"
 	"sync"
 
-	"url-shortener/internal/shortener"
+	"github.com/VoolFI71/url-shortener/internal/shortener"
 )
 
 type Store struct {

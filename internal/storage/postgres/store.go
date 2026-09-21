@@ -9,7 +9,7 @@ import (
 	"github.com/jackc/pgx/v5/pgconn"
 	"github.com/jackc/pgx/v5/pgxpool"
 
-	"url-shortener/internal/shortener"
+	"github.com/VoolFI71/url-shortener/internal/shortener"
 )
 
 const uniqueViolation = "23505"
