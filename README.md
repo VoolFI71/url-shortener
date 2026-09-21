@@ -44,20 +44,8 @@ docker-compose up --build
 Compose создаёт базу, применяет миграцию из `migrations` и запускает сервис на
 порту `8080`.
 
-Можно подключить свою базу:
-
-```powershell
-$env:STORAGE = 'postgres'
-$env:DATABASE_URL = 'postgres://user:password@localhost:5432/shortener?sslmode=disable'
-go run .\cmd\api
-```
-
-Переменные окружения:
-
-- `ADDR` — адрес для HTTP-сервера, по умолчанию `:8080`;
-- `PUBLIC_BASE_URL` — адрес, который будет добавляться к короткому коду;
-- `STORAGE` — `memory` или `postgres`;
-- `DATABASE_URL` — нужен только для PostgreSQL.
+Хранилище выбирается параметром `STORAGE`: `memory` используется по умолчанию,
+а `docker-compose up --build` запускает сервис с PostgreSQL.
 
 ## Тесты
 
